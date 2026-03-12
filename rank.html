@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RANKING | REDLINE</title>
+    <link rel="stylesheet" href="inex.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="logoliga.png">
+</head>
+<body>
+    <div class="bg-animation"><div class="orb"></div></div>
+
+    <nav class="navbar">
+        <ul class="menu">
+            <li><a href="index.html" class="nav-link">GŁÓWNA</a></li>
+            <li><a href="wyniki.html" class="nav-link">WYNIKI</a></li>
+            
+            <li class="dropdown">
+                <a href="#" class="nav-link active" id="teamsDropdown">
+                    ZESPOŁY <span class="arrow">▼</span>
+                </a>
+                <ul class="dropdown-menu" id="teamsMenu">
+                    <li><a href="zespoly.html">LISTA ZESPOŁÓW</a></li>
+                    <li><a href="rank.html">RANKING</a></li>
+                </ul>
+            </li>
+            
+            <li><a href="shedule.html" class="nav-link">HARMONOGRAM</a></li>
+            <li><a href="live.html" class="nav-link live-link">LIVE</a></li>
+        </ul>
+    </nav>
+
+    <section class="subpage-container">
+        <h2 class="page-title">ELO <span class="glow">RANKING</span></h2>
+
+        <div class="table-container">
+            <table class="ranking-table">
+                <thead>
+                    <tr>
+                        <th>POZ</th>
+                        <th>ZESPÓŁ</th>
+                        <th>MECZE</th>
+                        <th class="pts-header">PUNKTY ELO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td class="team-name-cell"><img src="syntra.png" class="mini-logo"> SYNTRA</td><td>0</td><td class="pts-cell">1000</td></tr>
+                    <tr><td>2</td><td class="team-name-cell"><img src="crystal-club.png" class="mini-logo"> CRYSTAL CLUB</td><td>0</td><td class="pts-cell">1000</td></tr>
+                    <tr><td>3</td><td class="team-name-cell"><img src="phantom.png" class="mini-logo"> PHANTOM SQUAD</td><td>0</td><td class="pts-cell">1000</td></tr>
+                    <tr><td>4</td><td class="team-name-cell"><img src="lynax.png" class="mini-logo"> LYNAX</td><td>0</td><td class="pts-cell">1000</td></tr>
+                    <tr><td>5</td><td class="team-name-cell"><img src="VP.png" class="mini-logo"> VIRTUS PRO</td><td>0</td><td class="pts-cell">1000</td></tr>
+                    <tr><td>6</td><td class="team-name-cell"><img src="norix.png" class="mini-logo"> THE NORIX</td><td>0</td><td class="pts-cell">1000</td></tr>
+                    <tr><td>7</td><td class="team-name-cell"><img src="riosq.png" class="mini-logo"> RIO DE DZIEJÓW</td><td>0</td><td class="pts-cell">1000</td></tr>
+                    <tr><td>8</td><td class="team-name-cell"><img src="alisq.png" class="mini-logo"> ALIMENCIARZE</td><td>0</td><td class="pts-cell">1000</td></tr>
+                    <tr><td>9</td><td class="team-name-cell"><img src="paralityk.png" class="mini-logo"> PARALITYK TEAM</td><td>0</td><td class="pts-cell">1000</td></tr>
+                    <tr><td>10</td><td class="team-name-cell"><img src="pdw.png" class="mini-logo"> PDW</td><td>0</td><td class="pts-cell">1000</td></tr>
+                    <tr><td>11</td><td class="team-name-cell"><img src="srakery.png" class="mini-logo"> SRAKERY</td><td>0</td><td class="pts-cell">1000</td></tr>
+                    <tr><td>12</td><td class="team-name-cell"><img src="navisq.png" class="mini-logo"> NAVI</td><td>0</td><td class="pts-cell">1000</td></tr>
+                    <tr><td>13</td><td class="team-name-cell"><img src="ice.png" class="mini-logo"> ICE ESPORT</td><td>0</td><td class="pts-cell">1000</td></tr>
+                    <tr><td>14</td><td class="team-name-cell"><img src="husar.jpg" class="mini-logo"> HUSAR ESPORT</td><td>0</td><td class="pts-cell">1000</td></tr>
+                    <tr><td>15</td><td class="team-name-cell"><img src="XX.png" class="mini-logo"> GrzybESPORT</td><td>0</td><td class="pts-cell">1000</td></tr>
+                    <tr><td>16</td><td class="team-name-cell"><img src="cyren.png" class="mini-logo"> TEAM CYREN</td><td>0</td><td class="pts-cell">1000</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <script>
+        // Obsługa dropdown na mobile
+        document.getElementById('teamsDropdown').addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                document.getElementById('teamsMenu').classList.toggle('show');
+            }
+        });
+    </script>
+</body>
+</html>

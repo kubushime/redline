@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIVE | REDLINE</title>
+    <link rel="stylesheet" href="inex.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="logoliga.png">
+    <style>
+        /* --- STYLIZACJA INTERAKTYWNYCH KROPEK --- */
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #333; /* Offline */
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 15px;
+            transition: 0.3s;
+        }
+
+        /* Stan ONLINE - aktywujesz dodając klasę 'is-online' do przycisku 'channel-link' */
+        .is-online .status-dot {
+            background-color: #00ff00;
+            box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+            animation: pulse-green 2s infinite;
+        }
+
+        .channel-link.is-online {
+            border-left: 3px solid #00ff00;
+            background: rgba(0, 255, 0, 0.05);
+            color: #fff;
+        }
+
+        @keyframes pulse-green {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .channel-link {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 15px;
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            color: #888;
+            font-family: 'Syncopate';
+            font-size: 0.7rem;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: 0.3s;
+            text-align: left;
+        }
+
+        .channel-link:hover {
+            border-color: #333;
+            color: #fff;
+        }
+
+        .stream-sidebar h3 {
+            font-family: 'Syncopate';
+            color: #ff0000;
+            text-shadow: 0 0 10px rgba(255,0,0,0.5);
+            margin-bottom: 20px;
+            font-size: 0.8rem;
+        }
+
+        .live-chat-info {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255,255,255,0.02);
+            border: 1px dashed #222;
+            text-align: center;
+        }
+
+        .btn-small-red {
+            display: inline-block;
+            margin-top: 10px;
+            background: #ff0000;
+            color: #fff;
+            padding: 8px 15px;
+            text-decoration: none;
+            font-family: 'Syncopate';
+            font-size: 0.6rem;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"><div class="orb"></div></div>
+
+     <nav class="navbar">
+        <ul class="menu">
+            <li><a href="index.html" class="nav-link">GŁÓWNA</a></li>
+            <li><a href="wyniki.html" class="nav-link">WYNIKI</a></li>
+            
+            <li class="dropdown">
+                <a href="#" class="nav-link active" id="teamsDropdown">
+                    ZESPOŁY <span class="arrow">▼</span>
+                </a>
+                <ul class="dropdown-menu" id="teamsMenu">
+                    <li><a href="zespoly.html">LISTA ZESPOŁÓW</a></li>
+                    <li><a href="rank.html">RANKING</a></li>
+                </ul>
+            </li>
+            
+            <li><a href="shedule.html" class="nav-link">HARMONOGRAM</a></li>
+            <li><a href="live.html" class="nav-link live-link">LIVE</a></li>
+        </ul>
+    </nav>
+
+    <section class="subpage-container">
+        <header style="text-align: center; margin-bottom: 40px;">
+            <h2 class="page-title">ON <span class="glow">AIR</span></h2>
+        </header>
+
+        <div class="stream-container" style="display: flex; gap: 20px; max-width: 1200px; margin: 0 auto; height: 600px;">
+            <div class="main-video" style="flex: 3; background: #000; border: 1px solid #111;">
+                <iframe 
+                    id="main-frame"
+                    src="https://player.twitch.tv/?channel=kubushimen&parent=localhost&parent=127.0.0.1" 
+                    frameborder="0" 
+                    allowfullscreen="true" 
+                    width="100%" 
+                    height="100%">
+                </iframe>
+            </div>
+
+            <div class="stream-sidebar" style="flex: 1; min-width: 250px;">
+                <h3>WYBÓR KANAŁU</h3>
+                <div class="channel-list">
+                    
+                    <button onclick="changePlayer('twitch', 'kubushimen')" class="channel-link">
+                        <span class="status-dot"></span> KUBUSHIMEN
+                    </button>
+                    
+                    <button onclick="changePlayer('kick', 'dombik99')" class="channel-link">
+                        <span class="status-dot"></span> DOMBIK - KICK
+                    </button>
+                    
+                    <button onclick="changePlayer('youtube', 'lNSGErdWVSuW5nn6')" class="channel-link">
+                        <span class="status-dot"></span> DOMBIK - YT
+                    </button>
+
+                </div>
+                
+              
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function changePlayer(platform, id) {
+            const frame = document.getElementById('main-frame');
+            // Automatyczne wykrywanie hosta dla Twitcha
+            const currentHost = window.location.hostname || "localhost";
+            let newUrl = "";
+
+            if (platform === 'twitch') {
+                newUrl = `https://player.twitch.tv/?channel=${id}&parent=${currentHost}&parent=localhost&parent=127.0.0.1`;
+            } else if (platform === 'kick') {
+                newUrl = `https://player.kick.com/${id}`;
+            } else if (platform === 'youtube') {
+                newUrl = `https://www.youtube.com/embed/${id}?autoplay=1`;
+            }
+
+            frame.src = newUrl;
+        }
+    </script>
+
+</body>
+</html>
