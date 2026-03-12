@@ -1351,3 +1351,34 @@ body {
     text-align: center;
     font-size: 0.9rem;
 }
+/* Styl dla drużyny, która przegrała */
+.swiss-match span.loser {
+    opacity: 0.3;          /* Przezroczystość (gaszenie) */
+    filter: grayscale(1);  /* Czarno-białe logo */
+    text-decoration: line-through; /* Przekreślenie tekstu (opcjonalnie) */
+}
+
+/* Opcjonalnie: Styl dla zwycięzcy, żeby bardziej się wyróżniał */
+.swiss-match span.winner {
+    color: #fff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+    font-weight: 900;
+}/* Styl dla wygranej drużyny (opcjonalny, lekko wzmacnia widoczność) */
+.win {
+    opacity: 1;
+    filter: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Styl dla przegranej drużyny (gaszenie) */
+.loss {
+    opacity: 0.3;          /* Mocne przyciemnienie */
+    filter: grayscale(1);  /* Logo staje się czarno-białe */
+    transition: 0.4s;      /* Płynne przejście */
+}
+
+/* Styl dla małego napisu "vs" - opcjonalnie też go przyciemniamy, gdy mecz rozstrzygnięty */
+.swiss-match:has(.loss) small {
+    opacity: 0.5;
+}
