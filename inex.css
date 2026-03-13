@@ -1382,3 +1382,72 @@ body {
 .swiss-match:has(.loss) small {
     opacity: 0.5;
 }
+/* --- RESPONSYWNE MENU --- */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px;
+    }
+
+    .menu {
+        gap: 10px; /* Mniejsze odstępy na telefonie */
+        flex-wrap: wrap; /* Menu zawinie się do nowej linii, jeśli zabraknie miejsca */
+        justify-content: center;
+    }
+
+    .nav-link {
+        font-size: 0.75rem; /* Mniejszy tekst menu */
+        padding: 5px 8px;
+    }
+
+    /* Naprawa okienka Regulaminu na telefonie */
+    .modal-content {
+        width: 95%;
+        margin: 15% auto;
+        padding: 15px;
+    }
+}
+
+/* --- RESPONSYWNE TABELE (RANKING I SWISS) --- */
+@media (max-width: 600px) {
+    /* Kontener tabeli musi pozwalać na przewijanie palcem w bok */
+    .table-container, .swiss-grid-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        display: block; /* Ważne dla przewijania */
+    }
+
+    .ranking-table th, .ranking-table td {
+        padding: 8px 5px;
+        font-size: 0.7rem;
+    }
+
+    .mini-logo {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* --- RESPONSYWNE KARTY ZESPOŁÓW (GRID) --- */
+@media (max-width: 1024px) {
+    .liqui-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Dopasuje ilość kolumn do ekranu */
+        gap: 15px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 1.5rem; /* Mniejszy tytuł strony na bardzo małych ekranach */
+    }
+
+    .btn-group {
+        flex-direction: column; /* Przyciski jeden pod drugim na telefonie */
+        width: 100%;
+        align-items: center;
+    }
+
+    .btn-red, .btn-ghost {
+        width: 90%; /* Przyciski na prawie całą szerokość */
+    }
+}
